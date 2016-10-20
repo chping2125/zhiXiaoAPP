@@ -1,8 +1,8 @@
 {
   "name": "webpack",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "基于Vue.js的知晓APP重构",
+  "main": "app.js",
   "dependencies": {
     "webpack": "^1.13.2"
   },
@@ -29,6 +29,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack-dev-server --inline --hot"
   },
-  "author": "",
+  "author": "chping",
   "license": "ISC"
 }
