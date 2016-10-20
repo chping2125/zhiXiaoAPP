@@ -74,4 +74,4 @@ chping分支：
 ```js
   $ npm run build
 ```
-建议：开启两个git bash，一个开启``webpack -w``，另一个开启``npm run build``。这样开一保证实时编译和浏览器刷新。
+建议：开启两个git bash，一个开启``webpack -w``，另一个开启``npm run build``。这样可以保证实时编译和浏览器刷新。
