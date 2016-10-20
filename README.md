@@ -1,12 +1,12 @@
 # 基于Vue.js重构知晓APP项目
 
 ##下载
-1. 在空白目录直接clone该项目
+### 1.在空白目录直接clone该项目
 ```js
   $ git clone git@github.com:chping2125/zhiXiaoAPP.git
 ```
 
-2. 创建本地工作分支
+### 2.创建本地工作分支
 shy分支：
 ```js
   $ git checkout -b shy
@@ -26,9 +26,29 @@ chping分支：
 ```js
   $ git checkout -b chping
 ```
-然后将本地你的分支提交与远程分支建立联系，开发的时候在你的本地分支上开发，提交你的本地分支，勿动master分支。
 
-# 开发目录解释
+### 3.你的本地分支与远程分支建立联系
+```js
+  1. $ git add .
+
+  2. $ git commit -am '分支名 branch commit'
+
+  3. $ git push --set-upstream origin 分支名
+```
+项目初始化完毕，可以准备开始开发工作了。
+
+## 二、准备开发工作
+### 1.安装依赖模块
+```js
+  $ npm install
+```
+
+### 2.测试运行
+```js
+  $ npm run build
+```
+
+### 3.开发目录解释
 ```
   zhiXiaoAPP
   |__prd:输出目录
@@ -64,14 +84,8 @@ chping分支：
   |__webpack.config.js: webpack配置文件
 
 ```
-# 开始开发
-1. 安装依赖模块
-```js
-  $ npm install
-```
 
-2. 运行
-```js
-  $ npm run build
-```
-建议：开启两个git bash，一个开启``webpack -w``，另一个开启``npm run build``。这样开一保证实时编译和浏览器刷新。
+### 4.开始开发
+首先按第3步要求建立你的**页面入口**js文件和样式文件，并在应用入口文件中引入页面入口文件。
+接下来就开始你的开发工作吧！
+建议： 开发过程中建议开启两个git bash，一个开启``webpack -w``，另一个开启``npm run build``。这样可以保证实时编译和浏览器刷新。
