@@ -3,6 +3,6 @@
 
 //主页入口样式文件
 @import "../views/basic.scss";
-@import "../views/index.scss"
 
-//其他页面入口样式文件自行添加
+//其他页面入口样式文件自行添加,如index.scss是主页的样式文件
+@import "../views/index.scss"
