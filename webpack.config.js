@@ -32,6 +32,10 @@ module.exports = {
         test:/\.string$/,
         loader:'string'
       },
+      {
+        test:/\.vue$/,
+        loader:'vue'
+      },
       // {
       //   test: /\.html$/,
       //   loader: 'html-withimg-loader'
@@ -58,6 +62,12 @@ module.exports = {
     // }),
     // new HtmlWebpackPlugin()
   ],
+  //vue配置
+  vue:{
+    loaders:{
+      js: 'babel'
+    }
+  },
   devServer: {
     contentBase:  __dirname +'/prd',//本地服务器所加载的页面所在的目录
 		port:80,
