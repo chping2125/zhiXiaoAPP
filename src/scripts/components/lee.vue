@@ -1,3 +1,5 @@
 <template>
-  lee...
+  <div class="hot-catainer">
+  	
+  </div>
 </template>

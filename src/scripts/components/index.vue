@@ -1,7 +1,9 @@
 <template>
   <div class="box">
     <div class="index-container">
-      <router-view></router-view>
+      <router-view>
+      	
+      </router-view>
     </div>
     <footer id="footer">
       <ul>

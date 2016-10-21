@@ -24,7 +24,12 @@ router.map({
         component: main
       },
       '/lee':{
-        component: lee
+        component: lee,
+        subRoutes:{
+        	'/':{
+       		 component: leeMain
+        	}
+        }
       },
       '/search':{
         component: search
