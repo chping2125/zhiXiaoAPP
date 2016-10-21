@@ -1,29 +1,16 @@
 <template>
   <div class="box">
     <div class="index-container">
-
+      <router-view></router-view>
     </div>
     <footer id="footer">
       <ul>
-        <!-- <li :class="{{'active':one}}"> -->
-        <li class="active">
-          <i class="iconfont">&#xe6bb;</i>
-          <p>主页</p>
-        </li>
-        <!-- <li :class="{{'active':two}}"> -->
-        <li>
-          <i class="iconfont">&#xe664;</i>
-          <p>排行榜</p>
-        </li>
-        <!-- <li :class="{{'active':three}}"> -->
-        <li>
-          <i class="iconfont">&#xe65c;</i>
-          <p>发现</p>
-        </li>
-        <!-- <li :class="{{'active':four}}"> -->
-        <li>
-          <i class="iconfont">&#xe735;</i>
-          <p>我的</p>
+        <li v-bind:class="cur == $index ? 'active' : ''"
+            v-for="data in navList"
+            v-on:click="changePage($index)"
+            v-link="{path:data.path}">
+          <i class="iconfont">{{{data.icon}}}</i>
+          <p>{{{data.name}}}</p>
         </li>
       </ul>
     </footer>
@@ -31,17 +18,26 @@
 </template>
 
 <script>
-  // var Vue = require('../libs/vue.js');
-  // var VueResource = require('../libs/vue-resource.js');
-  // Vue.use(VueResource);
-  //
-  // var vm = new Vue({
-  //   el:'#footer',
-  //   data:{
-  //     one: true,
-  //     two: false,
-  //     three: false,
-  //     four: false
-  //   }
-  // });
+  var Vue = require('../libs/vue.js');
+  var VueResource = require('../libs/vue-resource.js');
+  Vue.use(VueResource);
+
+  export default {
+    data(){
+      return {
+        cur: 0,
+        navList:[
+          {path:'/',icon:'&#xe6bb;',name:'主页'},
+          {path:'/lee',icon:'&#xe664;',name:'排行榜'},
+          {path:'/search',icon:'&#xe65c;',name:'发现'},
+          {path:'/my',icon:'&#xe735;',name:'我的'}
+        ]
+      }
+    },
+    methods:{
+      changePage:function(i){
+        this.cur = i;
+      }
+    }
+  }
 </script>
