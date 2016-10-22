@@ -1,17 +1,17 @@
 <template>
   <div class="my-container">
-    <div class="header">
-      <span>我的</span>
+    <div class="headerDafult">
+      <span>{{title}}</span>
     </div>
     <div class="content">
       <div>
         <div class="first one">
           <div class="left">
-            <div class=""><img src="http://placehold.it/48x48" alt="" /></div>
+            <div><img src="/images/my/user_notlogin_head.png" alt="" /></div>
             <span>未登录</span>
           </div>
           <div class="right">
-            <button>登陆/注册</button>
+            <button v-link="{ name: 'login', query: { path:this.$route.path, title:'登录' }}">登陆/注册</button>
           </div>
         </div>
         <div class="two">
@@ -108,6 +108,20 @@
     </div>
   </div>
 </template>
-<script type="text/javascript">
+<script>
+  import VueRouter from '../libs/vue-router.js';
+  import Vue from '../libs/vue.js';
+  Vue.use(VueRouter);
+  export default {
+    data(){
+      return {
+        title:'我的',
+        curPath:this.$route.path,
+        prePath:this.$route.params.path
+      }
+    },
+    methods:{
 
+    }
+  }
 </script>
