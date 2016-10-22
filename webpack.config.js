@@ -1,6 +1,5 @@
 var Et = require('extract-text-webpack-plugin');
 var Webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'eval-source-map',//配置生成Source Maps，选择合适的选项

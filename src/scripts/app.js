@@ -11,6 +11,8 @@ import my from './components/my.vue';
 //APP route
 import Vue from './libs/vue.js';
 import VueRouter from './libs/vue-router.js';
+import VueResource from './libs/vue-resource.js';
+Vue.use(VueResource);
 Vue.use(VueRouter);
 
 let router = new VueRouter();

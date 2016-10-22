@@ -5,10 +5,20 @@
     /* chrome、firefox */
      url('/iconfont/iconfont.ttf') format('truetype');
 }
+@font-face {
+    font-family: 'iconfont';
+    /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    src:url('/iconfont/search_iconfont.woff') format('woff'),
+     /* chrome、firefox */
+      url('/iconfont/search_iconfont.ttf') format('truetype');
+}
 .iconfont {
   font-family: iconfont;
 }
-
+html,body{
+  height:100%;
+  width:100%;
+}
 .box{
   background: #fff;
   width: 100%;
@@ -17,6 +27,7 @@
   flex-direction: column;
   .index-container{
     flex: 1;
+    overflow: hidden;
   }
   #footer{
     width: 100%;
