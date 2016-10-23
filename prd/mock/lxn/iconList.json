@@ -1,32 +1,32 @@
 [
   {
     "iconText":"&#xe64c;",
-    "color":"#00c2ea",
+    "color":"color:#00c2ea",
     "text":"查快递",
     "linkAddr":""
   },{
     "iconText":"&#xe626;",
-    "color":"#b573d4",
+    "color":"color:#b573d4",
     "text":"查公交",
     "linkAddr":""
   },{
     "iconText":"&#xe7f9;",
-    "color":"#81cf2b",
+    "color":"color:#81cf2b",
     "text":"查违章",
     "linkAddr":""
   },{
     "iconText":"&#xe619;",
-    "color":"#19ce8b",
+    "color":"color:#19ce8b",
     "text":"查火车",
     "linkAddr":""
   },{
     "iconText":"&#xe653;",
-    "color":"#0088c9",
+    "color":"color:#0088c9",
     "text":"查天气",
     "linkAddr":""
   },{
     "iconText":"&#xe609;",
-    "color":"#f96b69",
+    "color":"color:#f96b69",
     "text":"特卖场",
     "linkAddr":""
   }

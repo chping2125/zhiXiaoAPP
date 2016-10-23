@@ -7,11 +7,12 @@ import main from './components/main.vue';
 import lee from './components/lee.vue';
 import search from './components/search.vue';
 import my from './components/my.vue';
-
+import results from './components/results.vue';
 //APP route
 import Vue from './libs/vue.js';
 import VueRouter from './libs/vue-router.js';
 import VueResource from './libs/vue-resource.js';
+
 Vue.use(VueResource);
 Vue.use(VueRouter);
 
@@ -33,6 +34,10 @@ router.map({
       },
       '/my':{
         component: my
+      },
+      '/results/:key':{
+        name:'results',
+        component:results
       }
     }
   }
