@@ -1,5 +1,5 @@
 {
-  "name": "webpack",
+  "name": "lee",
   "version": "1.0.0",
   "description": "基于Vue.js的知晓APP重构",
   "main": "app.js",
@@ -32,5 +32,13 @@
     "build": "webpack-dev-server"
   },
   "author": "chping",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chping2125/zhiXiaoAPP.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chping2125/zhiXiaoAPP/issues"
+  },
+  "homepage": "https://github.com/chping2125/zhiXiaoAPP#readme"
 }

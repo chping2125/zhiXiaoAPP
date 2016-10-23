@@ -5,6 +5,7 @@ import '../styles/usage/page/app.scss';
 import index from './components/index.vue';
 import main from './components/main.vue';
 import lee from './components/lee.vue';
+import hotUser from './components/hotuser.vue';
 import search from './components/search.vue';
 import my from './components/my.vue';
 
@@ -24,12 +25,7 @@ router.map({
         component: main
       },
       '/lee':{
-        component: lee,
-        subRoutes:{
-        	'/':{
-       		 component: leeMain
-        	}
-        }
+        component: lee       
       },
       '/search':{
         component: search
@@ -38,7 +34,10 @@ router.map({
         component: my
       }
     }
-  }
+  },
+  '/hotuser':{
+		component: hotUser
+	}
 });
 
 //启动router
