@@ -19,3 +19,22 @@
     $border-color: #0456e2,
     $bgcolor: #4a87ee
 );
+
+//登录按钮
+@include yo-btn(
+  $name: login,
+  $color: #fff,
+  $border-color: #1793f9,
+  $bgcolor: #1793f9,
+  $active-border-color: #1486e4,
+  $active-bgcolor: #1486e4
+);
+//注册按钮
+@include yo-btn(
+  $name: regiter,
+  $color: #1793f9,
+  $border-color: #1793f9,
+  $bgcolor: #f5f5f5,
+  $active-border-color: #1793f9,
+  $active-bgcolor: #fff
+);
