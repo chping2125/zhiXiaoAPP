@@ -1,16 +1,11 @@
+.index-container{
+  overflow: scroll;
+}
 .my-container{
   @include flexbox();
   @include flex-direction(column);
   height: 100%;
-  .header{
-    width: 100%;
-    height: .44rem;
-    background: $headerBgColor;
-    text-align: center;
-    line-height: .44rem;
-    color: #fff;
-    letter-spacing: .04rem;
-  }
+
   .content{
     @include flex();
     background: #eee;
@@ -85,13 +80,13 @@
           .left{
             div{
               height: 100%;
-              width: auto;
+              // width: auto;
               img{
                 height: 100%;
               }
             }
             span{
-              padding-left: .20rem;
+              padding-left: .05rem;
               @include align-self();
             }
           }

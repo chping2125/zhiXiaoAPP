@@ -1,6 +1,5 @@
 var Et = require('extract-text-webpack-plugin');
 var Webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'eval-source-map',//配置生成Source Maps，选择合适的选项
@@ -65,7 +64,9 @@ module.exports = {
   //vue配置
   vue:{
     loaders:{
-      js: 'babel'
+      js: 'babel',
+      // css: Et.extract('vue-style-loader', 'css!sass'),
+      sass: Et.extract('vue-style-loader', 'css!sass')
     }
   },
   devServer: {

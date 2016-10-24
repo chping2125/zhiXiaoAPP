@@ -1,5 +1,5 @@
 {
-  "name": "webpack",
+  "name": "lee",
   "version": "1.0.0",
   "description": "基于Vue.js的知晓APP重构",
   "main": "app.js",
@@ -25,12 +25,21 @@
     "vue-loader": "^8.5.2",
     "vue-resource": "^1.0.3",
     "vue-route": "^1.5.1",
+    "vue-style-loader": "^1.0.0",
     "webpack-dev-server": "^1.16.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack-dev-server"
+    "build": "webpack-dev-server --inline"
   },
   "author": "chping",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chping2125/zhiXiaoAPP.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chping2125/zhiXiaoAPP/issues"
+  },
+  "homepage": "https://github.com/chping2125/zhiXiaoAPP#readme"
 }
