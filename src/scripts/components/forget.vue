@@ -19,20 +19,12 @@
 </template>
 
 <script>
-// import VueRouter from '../libs/vue-router.js';
-// import Vue from '../libs/vue.js';
-// Vue.use(VueRouter);
-// export default {
-//   methods: {
-//     // forget(){
-//     //   this.$router.go({
-//     //     path:'/index2/forget',
-//     //     query:{
-//     //       title:'忘记密码',
-//     //       path:this.$route.path
-//     //     }
-//     //   });
-//     // }
-//   }
-// }
+import VueRouter from '../libs/vue-router.js';
+import Vue from '../libs/vue.js';
+Vue.use(VueRouter);
+export default {
+  methods: {
+
+  }
+}
 </script>

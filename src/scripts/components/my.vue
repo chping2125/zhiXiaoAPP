@@ -1,7 +1,7 @@
 <template>
   <div class="my-container">
-    <div class="headerDafult">
-      <span>{{title}}</span>
+    <div class="yo-header yo-header-normal">
+      <h2 class="title">{{title}}</h2>
     </div>
     <div class="content">
       <div>
@@ -126,8 +126,8 @@
     },
     methods:{
       goLogin(){
-        this.setLoginPrePath(this.$route.path);
-        this.$router.go({ name: 'login', query: {title:'登录'}})
+        this.setLoginPrePath({path:this.$route.path,title:'登录'});
+        this.$router.go({ name: 'login'})
       }
     }
   }

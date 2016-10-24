@@ -33,11 +33,11 @@ export default {
   },
   methods: {
     forget(){
-      this.setLoginPrePath(this.$route.path);
+      this.setLoginPrePath({path:this.$route.path,title:'忘记密码'});
       this.$router.go({path:'/index2/forget'});
     },
     register(){
-      this.setLoginPrePath(this.$route.path);
+      this.setLoginPrePath({path:this.$route.path,title:'用户注册'});
       this.$router.go({path:'/index2/register'});
     },
     login(){
