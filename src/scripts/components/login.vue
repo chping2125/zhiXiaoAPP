@@ -10,39 +10,43 @@
       </label>
     </div>
     <div class="loginBtn">
-      <button class="yo-btn yo-btn-login">登录</button>
+      <button class="yo-btn yo-btn-login" v-on:click="login">登录</button>
     </div>
     <div class="registerBtn">
-      <button class="yo-btn yo-btn-regiter" v-link="{path:'/index2/register',query:{path:this.$route.path,title:'注册'}}">注册新用户</button>
+      <button class="yo-btn yo-btn-regiter" v-on:click="register">注册新用户</button>
     </div>
   </div>
 </template>
 
 <script>
-import VueRouter from '../libs/vue-router.js';
 import Vue from '../libs/vue.js';
+import VueRouter from '../libs/vue-router.js';
+import VueResource from '../libs/vue-resource.js';
+import Vuex from '../vuex/actions.js';
 Vue.use(VueRouter);
+Vue.use(VueResource);
 export default {
-  data () {
-    return {
-      title:this.$route.params.title,
-      curPath:this.$route.path,
-      prePath:this.$route.query.path
+  vuex: {
+    actions: {
+      setLoginPrePath: Vuex.loginPrePath
     }
   },
-  computed: {},
-  mounted () {},
   methods: {
     forget(){
-      this.$router.go({
-        path:'/index2/forget',
-        query:{
-          title:'忘记密码',
-          path:this.$route.path
+      this.setLoginPrePath(this.$route.path);
+      this.$router.go({path:'/index2/forget'});
+    },
+    register(){
+      this.setLoginPrePath(this.$route.path);
+      this.$router.go({path:'/index2/register'});
+    },
+    login(){
+      this.$http.get("/zhixiao/user").then(
+        (res)=>{
+          console.log(res);
         }
-      });
+      )
     }
-  },
-  components: {}
+  }
 }
 </script>
