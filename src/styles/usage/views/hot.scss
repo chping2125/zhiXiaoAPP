@@ -191,6 +191,11 @@
         width: 100%;
     }
     .second{
+        @include flexbox();
+        @include flex-direction(column);
+        #hot2-scroll,#hot21-scroll,#hot22-scroll{
+            height: 100%;
+        }
         .usersList{
             padding: 0 7px;
             

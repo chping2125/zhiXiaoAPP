@@ -102,9 +102,9 @@
   											</div>
   											
   											<div class="swiper-slide">
-  												<section >
+  												<section id="hot21-scroll">
 							                <ul class="usersList">
-							                  <li v-for="readMes in reads">
+							                  <li v-for="readMes in reads" v-on:click="pastMes(readMes.img,readMes.uName,readMes.num,readMes.money)"  v-link="{path:readMes.path}">
 							                  	<div><span>{{$index + 1}}</span></div>
 							                  	<div class="headImg"><img v-bind:src="readMes.img"/></div>
 							                  	<p class="uName">{{readMes.uName}}</p>
@@ -116,9 +116,9 @@
   											</div>
   											
   											<div class="swiper-slide">
-  												<section >
+  												<section id="hot22-scroll">
 							                <ul class="usersList">
-							                  <li v-for="moneyMes in moneyM">
+							                  <li v-for="moneyMes in moneyM" v-on:click="pastMes(moneyMes.img,moneyMes.uName,moneyMes.num,moneyMes.money)"  v-link="{path:moneyMes.path}">
 							                  	<div><span>{{$index + 1}}</span></div>
 							                  	<div class="headImg"><img v-bind:src="moneyMes.img"/></div>
 							                  	<p class="uName">{{moneyMes.uName}}</p>
@@ -169,6 +169,9 @@
   					 this.message = res.data;
   					 setTimeout(function(){
 	            	new IScroll('#hot-scroll');
+	            	new IScroll('#hot2-scroll');
+	            	new IScroll('#hot21-scroll');
+	            	new IScroll('#hot22-scroll');
 	           }, 500);
   					 
   					 
