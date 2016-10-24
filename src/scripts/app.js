@@ -9,11 +9,11 @@ import lee from './components/lee.vue';
 import hotUser from './components/hotuser.vue';
 import search from './components/search.vue';
 import my from './components/my.vue';
+import ssys from './components/ssys.vue';
 import results from './components/results.vue';
 import login from './components/login.vue';
 import register from './components/register.vue';
 import forget from './components/forget.vue';
-
 
 //APP route
 import Vue from './libs/vue.js';
@@ -69,6 +69,9 @@ router.map({
         component: forget
       }
     }
+  },
+  '/qqq':{
+    component:ssys
   },
   '/hotuser':{
 		component: hotUser
