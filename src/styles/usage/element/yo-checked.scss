@@ -4,6 +4,11 @@
 /**
  * yo-checked扩展
  */
+ @include yo-checked(
+     $name: protocol,
+     $border-color: #4a87ee,
+     $radius: 50%
+ );
 
 @include yo-checked(
     $name: a,

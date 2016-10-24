@@ -1,0 +1,63 @@
+@import "../fragment/yo-header.scss";
+@import "../element/yo-input.scss";
+@import "../element/yo-btn.scss";
+.index-container{
+  @include flexbox();
+  @include flex-direction(column);
+  .content{
+    height: 100%;
+    .login-content{
+      padding: .10rem;
+      background: #eee;
+      height: 100%;
+      .yo-list{
+          padding: 0 0.10rem;
+          background: #fff;
+          input{
+            background: #fff;
+            border: 0;
+          }
+        .username div{
+          width: 100%;
+          height: 0.44rem;
+          @include border(0 0 1px 0,#000);
+          input{
+            padding-left: .25rem;
+            background: #fff url('/images/my/user_phone.png') no-repeat left center;
+            background-size: 0.12rem 0.22rem;
+            color: #828181;
+          }
+        }
+        .password{
+          position: relative;
+          input{
+            padding-left: .25rem;
+            background: #fff url('/images/my/user_password.png') no-repeat left center;
+            background-size: 0.18rem 0.20rem;
+          }
+          span{
+            font-size: 12px;
+            color: #828181;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform:translateY(0,-50%);
+          }
+        }
+      }
+      button{
+        width: 100%;
+        height: .44rem;
+      }
+      .loginBtn{
+        margin-top: 0.30rem;
+
+      }
+      .registerBtn{
+        margin-top: 0.30rem;
+
+      }
+
+    }
+  }
+}

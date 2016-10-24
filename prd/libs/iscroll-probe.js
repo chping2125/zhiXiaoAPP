@@ -307,7 +307,11 @@ function IScroll (el, options) {
 		bounceTime: 600,
 		bounceEasing: '',
 
+<<<<<<< HEAD
 		preventDefault: false,
+=======
+		preventDefault: true,
+>>>>>>> master
 		preventDefaultException: { tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT)$/ },
 
 		HWCompositing: true,
