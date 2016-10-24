@@ -10,15 +10,15 @@
   		<section>
   			<div class="swiper-container" id="hot-swiper">
   				<div class="swiper-wrapper">
-  					
+
   					<div class="swiper-slide first">
   							<nav>
   								<ul>
   										<li id="allFirst">
-  											<div>全部</div>	
+  											<div>全部</div>
   										</li>
 				              <li v-for="nav in navList" v-on:click="changeSwiper($index)" v-bind:class="bodyIndex == $index ? 'active': ''"><div>{{nav}}</div></li>
-				         </ul>  								 
+				         </ul>
   							</nav>
   							<div class="swiper-container" id="body-swiper">
   									<div id="allList">
@@ -26,22 +26,22 @@
   												<span>推荐</span>
   												<span>搞笑</span>
   												<span>健康</span>
-  												
+
   												<span>情感</span>
   												<span>两性</span>
   												<span>猎奇</span>
   												<span>励志</span>
-  												
+
   												<span>育儿</span>
   												<span>科技</span>
   												<span>汽车</span>
   												<span>星座</span>
-  												
+
   												<span>职场</span>
   												<span>美容</span>
   												<span>化妆</span>
   												<span>发型</span>
-  												
+
   												<span>娱乐</span>
   												<span>八卦</span>
   												<span>军事</span>
@@ -58,26 +58,26 @@
 							                  			<p><span>{{mes1.from}}</span> <span>阅读{{mes1.reader}}</span></p>
 							                  		</dt>
 							                  		<dd><img v-bind:src="mes1.img" alt=""></dd>
-							                  	</dl>					                  								                  	
+							                  	</dl>
 							                  </li>
 							                </ul>
 							              </section>
   											</div>
   											<div class="swiper-slide">qqqqqq</div>
   											<div class="swiper-slide">qqqqqq</div>
-  											
+
   									</div>
   							</div>
   					</div>
-  					
-  					
-  					
+
+
+
   					<div class="swiper-slide second">
   							<nav>
   								<ul>
   									<li id="allSecond"><div>全部</div>	</li>
 				              <li v-for="nav in userList" v-on:click="changeUserSwiper($index)" v-bind:class="userIndex == $index ? 'active': ''"><div>{{nav}}</div></li>
-				         </ul>  								 
+				         </ul>
   							</nav>
   							<div class="swiper-container" id="user-swiper">
   									<div id="allList1">
@@ -86,7 +86,7 @@
   											<span>总榜</span>
   									</div>
   									<div class="swiper-wrapper">
-  								
+
   											<div class="swiper-slide">
   													<section id="hot2-scroll">
 							                <ul class="usersList">
@@ -95,12 +95,12 @@
 							                  	<div class="headImg"><img v-bind:src="usermes.img"/></div>
 							                  	<p class="uName">{{usermes.uName}}</p>
 							                  	<p class="share">{{usermes.num}}分享</p>
-							                  				                  								                  	
+
 							                  </li>
 							                </ul>
 							              </section>
   											</div>
-  											
+
   											<div class="swiper-slide">
   												<section id="hot21-scroll">
 							                <ul class="usersList">
@@ -109,12 +109,12 @@
 							                  	<div class="headImg"><img v-bind:src="readMes.img"/></div>
 							                  	<p class="uName">{{readMes.uName}}</p>
 							                  	<p class="share">{{readMes.read}}阅读</p>
-							                  				                  								                  	
+
 							                  </li>
 							                </ul>
 							              </section>
   											</div>
-  											
+
   											<div class="swiper-slide">
   												<section id="hot22-scroll">
 							                <ul class="usersList">
@@ -123,12 +123,12 @@
 							                  	<div class="headImg"><img v-bind:src="moneyMes.img"/></div>
 							                  	<p class="uName">{{moneyMes.uName}}</p>
 							                  	<p class="share">{{moneyMes.money}}金币</p>
-							                  				                  								                  	
+
 							                  </li>
 							                </ul>
 							              </section>
   											</div>
-  											
+
   									</div>
   							</div>
   					</div>
@@ -141,7 +141,7 @@
 		var Vue = require('../libs/vue.js');
 		var VueResource = require('../libs/vue-resource.js');
   	Vue.use(VueResource);
-  	
+
   	var mySwiper = null;
   	var bodySwiper = null;
   	var userSwiper = null;
@@ -162,19 +162,19 @@
   			}
   		},
   		ready:function(){
-  			
+
   			var that = this;
   			this.$http.get('/mock/lee/hot1.json')
   				.then((res) => {
   					 this.message = res.data;
   					 setTimeout(function(){
 	            	new IScroll('#hot-scroll');
-	            	new IScroll('#hot2-scroll');
-	            	new IScroll('#hot21-scroll');
-	            	new IScroll('#hot22-scroll');
+	            	new IScroll('#hot2-scroll',{preventDefault:false});
+	            	new IScroll('#hot21-scroll',{preventDefault:false});
+	            	new IScroll('#hot22-scroll',{preventDefault:false});
 	           }, 500);
-  					 
-  					 
+
+
   					 mySwiper = new Swiper("#hot-swiper",{
   					 			onSlideChangeStart: function(){
 		              		that.curIndex = mySwiper.activeIndex;
@@ -190,7 +190,7 @@
 		              		that.userIndex = userSwiper.activeIndex;
 		            	}
   					 })
-  					
+
   				});
   				this.$http.get('/mock/lee/users.json')
   					.then((res) => {
@@ -213,41 +213,41 @@
   							this.userMessage = doPai(userMes,len,'num');
 							 	this.reads = doPai(userMes,len,'read');
 								this.moneyM = doPai(userMes,len,'money');
-  							
+
   					 		//this.userMessage = userMes;
- 
+
   				});
 
 						$('#allFirst').on('click',function(){
 								if($(this).children("div").text() != "收起"){
-									
+
 										$('#allList').css({"visibility":"visible"})
 										$(this).children("div").text('收起');
-											
+
 								}else{
 										$('#allList').css({"visibility":"hidden"})
 										$(this).children("div").text("全部")
 								}
-								
+
 						});
 						$('#allList').on('click','span',function(){
 								var txt = $(this).text();
 								$('#allFirst div').text(txt);
 								$('#allList').css({"visibility":"hidden"})
 						});
-						
-						
+
+
 						$('#allSecond').on('click',function(){
 								if($(this).children("div").text() != "收起"){
-									
+
 										$('#allList1').css({"visibility":"visible"})
 										$(this).children("div").text('收起');
-											
+
 								}else{
 										$('#allList1').css({"visibility":"hidden"})
 										$(this).children("div").text("全部")
 								}
-								
+
 						});
 						$('#allList1').on('click','span',function(){
 								var txt = $(this).text();
@@ -255,7 +255,7 @@
 								$('#allList1').css({"visibility":"hidden"})
 						})
   		},
-  		
+
   		methods:{
   				switchSwiper(index){
   						this.curIndex = index;
@@ -275,9 +275,9 @@
   					localStorage.setItem("share",share);
   					localStorage.setItem("mIn",money);
   				}
-					 
+
   		}
-  		
+
   	}
-		
+
 </script>

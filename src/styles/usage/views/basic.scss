@@ -24,11 +24,7 @@ html,body{
   width: 100%;
   height: 100%;
   @include flexbox();
-  flex-direction: column;
-//.index-container{
-//  flex: 1;
-//  overflow: hidden;
-//@include flex-direction(column);
+  @include flex-direction(column);
   .index-container{
     flex: 1;
     overflow: hidden;
