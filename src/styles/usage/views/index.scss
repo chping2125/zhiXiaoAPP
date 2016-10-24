@@ -1,4 +1,133 @@
 .main-container{
+  @include flexbox();
+  @include flex-direction(column);
+  height: 100%;
+  header{
+    height: .45rem;
+    background: #22292c;
+    width: 100%;
+    // overflow-x:scroll;
+    overflow: hidden;
+    ul{
+      @include flexbox();
+      // position: relative;
+      width: 6rem;
+      height: .45rem;
+      padding-left: .12rem;
+      li{
+        color:#fff;
+        height: .45rem;
+        line-height: .45rem;
+        padding:0 .13rem;
+      }
+      .active{
+        color:#00ccff;
+        border-bottom: .02rem solid #00ccff;
+      }
+    }
+  }
+  section{
+    @include flex();
+    @include flex-direction(column);
+    // overflow: hidden;
+    @include flexbox();
+    width: 100%;
+    background: #f5f5f5;
+    .grop{
+      @include flexbox();
+      height: .83rem;
+      width: 100%;
+      background: #fff;
+      border-bottom-color:#e7e7e7;
+      @include border($border-width: 0 0 0.01rem);
+      margin-bottom:.05rem;
+      ul{
+          @include flex();
+          @include flexbox();
+          @include justify-content(space-around);
+          @include align-items(center);
+        li{
+            @include flexbox();
+            @include flex-direction(column);
+            img{
+              margin: 0 auto;
+              height: .38rem;
+              width: .38rem;
+            }
+            i{
+              margin-top:.05rem;
+              color:#909090;
+            }
+        }
+      }
+    }
 
-  
+    .lbt{
+      @include flex();
+      @include flexbox();
+      width: 100%;
+      height: .01rem;
+      .swiper-container{
+        @include flex();
+        height: 100%;
+        width: 100%;
+        .swiper-slide{
+          ul{
+            padding: 0 .10rem;
+            width: 100%;
+            // height: 100%;
+            background: #fff;
+            p{
+              height: .35rem;
+              text-align: center;
+              line-height: .35rem;
+              color: #ccc;
+              border-bottom: .01px solid #e7e7e7;
+            }
+            li{
+              @include flexbox();
+              height: .90rem;
+              width: 100%;
+              background: #fff;
+              border-bottom-color:#e7e7e7;
+              @include border($border-width: 0 0 0.01rem);
+              dl{
+                @include flex();
+                @include flexbox();
+                height: 100%;
+                width: 100%;
+                dt{
+                  // position: relative;
+                  padding: .09rem 0;
+                  width: 70%;
+                  height: 100%;
+                  @include flexbox();
+                  @include flex-direction(column);
+                  @include justify-content(space-between);
+                  h3{
+
+                  }
+                  i{
+                    // position: absolute;
+                    color:#a8a8a8;
+                    font-size: .12rem;
+                    // bottom: .09rem;
+                  }
+                }
+                dd{
+                  width: 30%;
+                  height: 100%;
+                  img{
+                    height: 100%;
+                    width: 100%;
+                    padding: .09rem 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

@@ -7,6 +7,7 @@ import main from './components/main.vue';
 import lee from './components/lee.vue';
 import search from './components/search.vue';
 import my from './components/my.vue';
+import ssys from './components/ssys.vue';
 
 //APP route
 import Vue from './libs/vue.js';
@@ -33,6 +34,9 @@ router.map({
         component: my
       }
     }
+  },
+  '/qqq':{
+    component:ssys
   }
 });
 
