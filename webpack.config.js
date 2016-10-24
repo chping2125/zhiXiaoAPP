@@ -74,6 +74,15 @@ module.exports = {
 		port:80,
     colors: true,//终端中输出结果为彩色
     //historyApiFallback: true,//不跳转
-    inline: true//实时刷新
+    inline: true,//实时刷新
+    proxy:{
+      '/zhixiao/*':{
+        target: 'http://localhost:3000',
+        secure: false,
+        pathRewrite:{
+          '/^rest/':''
+        }
+      }
+    }
   }
 }

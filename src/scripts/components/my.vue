@@ -11,7 +11,7 @@
             <span>未登录</span>
           </div>
           <div class="right">
-            <button v-link="{ name: 'login', query: { path:this.$route.path, title:'登录' }}">登陆/注册</button>
+            <button v-on:click="goLogin">登陆/注册</button>
           </div>
         </div>
         <div class="two">
@@ -109,19 +109,26 @@
   </div>
 </template>
 <script>
-  import VueRouter from '../libs/vue-router.js';
   import Vue from '../libs/vue.js';
+  import VueRouter from '../libs/vue-router.js';
+  import Vuex from '../vuex/actions.js';
   Vue.use(VueRouter);
   export default {
+    vuex: {
+      actions: {
+        setLoginPrePath: Vuex.loginPrePath
+      }
+    },
     data(){
       return {
-        title:'我的',
-        curPath:this.$route.path,
-        prePath:this.$route.params.path
+        title:'我的'
       }
     },
     methods:{
-
+      goLogin(){
+        this.setLoginPrePath(this.$route.path);
+        this.$router.go({ name: 'login', query: {title:'登录'}})
+      }
     }
   }
 </script>
