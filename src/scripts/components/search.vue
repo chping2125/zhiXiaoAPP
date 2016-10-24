@@ -1,7 +1,7 @@
 <template>
 	<div id="search-container">
 		<div class="search-ser">
-		 	<img src="/images/lxn/searchImg/search_gray.png"/ class="search-icon" v-on:click="keyAction"/>
+		 	<img src="/images/lxn/searchImg/search_gray.png"/ class="search-icon" v-on:click="ser">
 		 	<span class="search-moni"><input type="text" v-model='inputText' placeholder="搜索感兴趣的内容" v-on:keyup.enter="keyAction"/></span>
 		</div>
 
@@ -13,7 +13,7 @@
 			</div>
 			<div class="search-core-hot">
 				<div class="search-core-title">
-					<i><img src="/images/lxn/searchImg/abc_list_longpressed_holo.9.png" /></i>
+					<i><img src="/images/lxn/searchImg/abc_list_longpressed_holo.9.png"/></i>
 					<span>实时热点</span>
 				</div>
 				<ul>
@@ -103,6 +103,10 @@
 						that.upIsShow =false;
 
 						myScroll.scrollBy(0,-30);
+						setTimeout(function(){
+							myScroll.refresh();
+						},0);
+
 						myScroll.on("scrollStart",function(){
 
 						})
@@ -111,25 +115,34 @@
 									that.$http.get("/mock/lxn/more.json").then(
 										(res)=>{
 											 setTimeout(function () {
-												myScroll.scrollBy(0,-30);
+												myScroll.scrollTo(0,-30);
 												that.moreList=res.data;
 												that.hotList=that.moreList.concat(that.hotList);
+
+											}, 500);
+											setTimeout(function(){
 												myScroll.refresh();
-											}, 1000);
+											},1000);
 										}
 									)
 							 }
 							 var maxY = this.maxScrollY - this.y;
 							 if(maxY>=0){
-								  myScroll.scrollTo(0, this.maxScrollY - 70);
+
+
+								 console.log(0);
+								  // myScroll.scrollTo(0, this.maxScrollY - 30);
 									that.$http.get("/mock/lxn/more.json").then(
 										(res)=>{
 											 setTimeout(function () {
-												myScroll.scrollBy(0,-30);
+
 												that.moreList=res.data;
 												that.hotList=that.hotList.concat(that.moreList);
+													myScroll.scrollTo(0,myScroll.maxScrollY-140);
+											}, 500);
+											setTimeout(function(){
 												myScroll.refresh();
-											}, 1000);
+											},1000);
 										}
 									)
 							 }
@@ -141,7 +154,6 @@
 		},
 		methods:{
 			keyAction(event){
-				console.log(1);
 				this.$route.router.go({path:'/results',name: 'results', params: { key: this.inputText}});
 			}
 		}
