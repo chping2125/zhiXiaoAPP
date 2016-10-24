@@ -1,0 +1,32 @@
+.submit-content{
+  input{
+    padding-left: 0.25rem;
+  }
+  .username div:after{
+    // @include border(0,#000);
+    border:0!important;
+  }
+  .yanzheng{
+    position: relative;
+    input{
+      background: #fff url('/images/my/user_verify.png') no-repeat left center!important;
+      background-size: 0.19rem 0.21rem!important;
+    }
+    span{
+      position: absolute;
+      top: 50%;
+      right: 0;
+      background: #ccc;
+      padding: .05rem;
+      color: #fff;
+      // transform: translate(0,-50%);
+    }
+  }
+  .newPassword input{
+    background: #fff url('/images/my/user_password.png') no-repeat left center!important;
+    background-size: 0.18rem 0.20rem!important;
+  }
+  .submitBtn{
+    margin-top: .15rem;
+  }
+}

@@ -8,8 +8,8 @@
 @include yo-header(
     $name: normal,
     $border-color: #ddd,
-    $bgcolor: #eee,
-    $color: map-get($base, color),
-    $item-color: map-get($base, color),
-    $item-ico-color: map-get($base, color)
+    $bgcolor: $headerBgColor,
+    $color: #fff,
+    $item-color: #fff,
+    $item-ico-color: #fff
 );

@@ -2,9 +2,16 @@
 @import "../core/reset";
 
 //主页入口样式文件
+@import "../views/var.scss";
 @import "../views/basic.scss";
 
 //其他页面入口样式文件自行添加,如index.scss是主页的样式文件
 @import "../views/index.scss";
 @import "../views/hot.scss";
 @import "../views/hotuser.scss";
+@import "../views/search.scss";
+@import "../views/results.scss";
+@import "../views/my.scss";
+@import "../views/login.scss";
+@import "../views/forget.scss";
+@import "../views/register.scss";
