@@ -1,0 +1,111 @@
+.index-container{
+  overflow: scroll;
+}
+.my-container{
+  @include flexbox();
+  @include flex-direction(column);
+  height: 100%;
+
+  .content{
+    @include flex();
+    background: #eee;
+    width: 100%;
+    overflow: hidden;
+    @include flexbox();
+    @include flex-direction(column);
+    //四大块共同部分
+    >div{
+      margin-top: .06rem;
+      height: 1.14rem;
+      width: 100%;
+      background: #fff;
+      @include flexbox();
+      @include flex-direction(column);
+      //first/two/three
+      >div{
+        &:not(.first){
+          @include border(4px 0 0,#eee);
+        }
+        @include flex(1);
+        @include flexbox();
+        @include justify-content(space-between);
+        @include align-content(center);
+        padding: 0.06rem;
+        width: 100%;
+        >div{//left/right
+          &:first-child{
+            @include flexbox();
+            @include justify-content(space-between);
+            @include align-content();
+          }
+        }
+      }
+      //
+      .first:not(.one),.two,.three{
+        >div{
+          @include flexbox();
+          @include justify-content();
+          @include align-items();
+        }
+        .left{
+          span{
+            display: inline-block;
+            height: .24rem;
+            width: .24rem;
+            background-size: 100%;
+            img{
+              width: 100%;
+            }
+          }
+          i{
+            margin-left: 0.10rem;
+            font-size: 14px;
+          }
+        }
+        .right{
+          span{
+            display: inline-block;
+            height: .18rem;
+            width: .18rem;
+            background-size: 100%;
+            background: url('/images/my/right_arrows.png');
+          }
+        }
+      }
+
+      &:first-child{
+        .one{
+          @include flex(2);
+          width: 100%;
+          .left{
+            div{
+              height: 100%;
+              // width: auto;
+              img{
+                height: 100%;
+              }
+            }
+            span{
+              padding-left: .05rem;
+              @include align-self();
+            }
+          }
+          .right{
+            @include flexbox();
+            @include align-items();
+            button{
+              padding: .08rem;
+              margin-right: 0.04rem;
+              background: #12cbf9;
+              border: 0;
+              @include border(1px,#00c3f3,solid,4px);
+              color: #fff;
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+}
