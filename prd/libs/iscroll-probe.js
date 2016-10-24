@@ -306,7 +306,6 @@ function IScroll (el, options) {
 		bounce: true,
 		bounceTime: 600,
 		bounceEasing: '',
-
 		preventDefault: true,
 		preventDefaultException: { tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT)$/ },
 
@@ -1598,7 +1597,7 @@ IScroll.prototype = {
 			if ( now >= destTime ) {
 				that.isAnimating = false;
 				that._translate(destX, destY);
-				
+
 				if ( !that.resetPosition(that.options.bounceTime) ) {
 					that._execEvent('scrollEnd');
 				}

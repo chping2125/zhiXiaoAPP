@@ -64,7 +64,9 @@ module.exports = {
   //vue配置
   vue:{
     loaders:{
-      js: 'babel'
+      js: 'babel',
+      // css: Et.extract('vue-style-loader', 'css!sass'),
+      sass: Et.extract('vue-style-loader', 'css!sass')
     }
   },
   devServer: {
