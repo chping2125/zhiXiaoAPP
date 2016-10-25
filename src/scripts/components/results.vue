@@ -47,6 +47,7 @@ export default{
   ready:function(){
     var that=this;
     this.key=this.$route.params.key;
+    console.log(this.key);
     this.$http.get("/mock/lxn/list.json").then(
       (res)=>{
         that.findAll=utilFuntion.serAction(that.key,res.data);

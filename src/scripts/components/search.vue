@@ -1,7 +1,7 @@
 <template>
 	<div id="search-container">
 		<div class="search-ser">
-		 	<img src="/images/lxn/searchImg/search_gray.png"/ class="search-icon" v-on:click="ser">
+		 	<img src="/images/lxn/searchImg/search_gray.png"/ class="search-icon" >
 		 	<span class="search-moni"><input type="text" v-model='inputText' placeholder="搜索感兴趣的内容" v-on:keyup.enter="keyAction"/></span>
 		</div>
 
@@ -10,6 +10,7 @@
 			<div class="upLoad"  id="load1" v-bind:class="upIsShow ? 'load' : ''">
 				<img src="/images/lxn/searchImg/xsearch_loading.png" />
 				<p>正在加载...</p>
+
 			</div>
 			<div class="search-core-hot">
 				<div class="search-core-title">
@@ -98,18 +99,16 @@
 					that.lifeList=res.data;
 					setTimeout(function(){
 						myScroll=new IScroll("#iscroll-wrap",{
-							bounce:false
+							bounce:false,
+							click:true,
+							mouseWheel:true,
+							probeType:3
 						});
 						that.upIsShow =false;
-
 						myScroll.scrollBy(0,-30);
 						setTimeout(function(){
 							myScroll.refresh();
 						},0);
-
-						myScroll.on("scrollStart",function(){
-
-						})
 						myScroll.on("scrollEnd",function(){
 							if(this.y>=0){
 									that.$http.get("/mock/lxn/more.json").then(
@@ -118,7 +117,6 @@
 												myScroll.scrollTo(0,-30);
 												that.moreList=res.data;
 												that.hotList=that.moreList.concat(that.hotList);
-
 											}, 500);
 											setTimeout(function(){
 												myScroll.refresh();
@@ -128,14 +126,10 @@
 							 }
 							 var maxY = this.maxScrollY - this.y;
 							 if(maxY>=0){
-
-
 								 console.log(0);
-								  // myScroll.scrollTo(0, this.maxScrollY - 30);
 									that.$http.get("/mock/lxn/more.json").then(
 										(res)=>{
 											 setTimeout(function () {
-
 												that.moreList=res.data;
 												that.hotList=that.hotList.concat(that.moreList);
 													myScroll.scrollTo(0,myScroll.maxScrollY-140);
