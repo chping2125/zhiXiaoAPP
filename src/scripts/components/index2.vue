@@ -7,7 +7,7 @@
             <i class="yo-ico">&#xf07d;</i>
             返回
         </span>
-    </div>
+      </div>
       <div class="content">
         <router-view></router-view>
     </div>
@@ -31,21 +31,24 @@ export default {
   },
   data () {
     return {
-      title:'',
-      curPath:'',
-      prePath:''
+      title:''
     }
   },
   props: ['loginTitle'],
   methods: {
     forback(){
-      var path = this.getLoginPrePath[0];
+      var path = this.getLoginPrePath[0].path;
       this.loginPrePathShift();
       this.$router.go(path);
     }
   },
+  computed:{
+    title () {
+      return this.getLoginPrePath[0].title
+    }
+  },
   ready(){
-
+    this.title = this.$route.query.title;
   }
 }
 </script>

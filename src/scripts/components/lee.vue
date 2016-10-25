@@ -176,7 +176,7 @@
   		ready:function(){
 
   			var that = this;
-  			this.$http.get('/mock/lee/hot1.json')
+  			this.$http.get('/zhixiao/hot')
   				.then((res) => {
   					 this.message = res.data;
   					 setTimeout(function(){
@@ -213,7 +213,7 @@
                         head.attr('src', './images/lee/ajax-loader.gif');
 
                          // ajax下拉刷新数据
-                        that.$http.get('/mock/lee/refresh.json')
+                        that.$http.get('/zhixiao/hotRefresh')
                             .then((res) => {
                                 that.message = res.data.concat(that.message);
                                 hotScroll.scrollTo(0, -35);
@@ -235,7 +235,7 @@
                 } else if (maxY >= 0) {
                     foot.attr('src', './images/lee/ajax-loader.gif');
                     //ajax上拉加载数据
-                    that.$http.get('/mock/lee/refresh.json')
+                    that.$http.get('/zhixiao/hotRefresh')
                         .then((res) => {
                             that.message = that.message.concat(res.data);
                             foot.removeClass('down');

@@ -45,6 +45,7 @@ router.map({
         component: search
       },
       '/my':{
+        name:'my',
         component: my
       },
       '/results/:key':{

@@ -68,7 +68,7 @@
   		},
   		ready:function(){
   			var that = this;
-  			this.$http.get('/mock/lee/hot1.json')
+  			this.$http.get('/zhixiao/hot')
   				.then((res) => {
 	  				this.messageU = res.data;
 	  				setTimeout(function(){

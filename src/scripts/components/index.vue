@@ -2,15 +2,15 @@
   <div class="box">
     <div class="index-container">
       <router-view>
-      	
+
       </router-view>
     </div>
     <footer id="footer">
       <ul>
-        <li v-bind:class="cur == $index ? 'active' : ''"
+        <li v-bind:class="getIndex == $index ? 'active' : ''"
             v-for="data in navList"
             v-on:click="changePage($index)"
-            v-link="{path:data.path}">
+            v-link="{path:data.path,exact: true}">
           <i class="iconfont">{{{data.icon}}}</i>
           <p>{{{data.name}}}</p>
         </li>
@@ -22,9 +22,19 @@
 <script>
   var Vue = require('../libs/vue.js');
   var VueResource = require('../libs/vue-resource.js');
+  import {getIndex} from '../vuex/getters.js';
+  import {changeIndexPage} from '../vuex/actions.js';
   Vue.use(VueResource);
 
   export default {
+    vuex: {
+      actions:{
+        changeIndexPage
+      },
+      getters:{
+        getIndex
+      }
+    },
     data(){
       return {
         cur: 0,
@@ -38,7 +48,8 @@
     },
     methods:{
       changePage:function(i){
-        this.cur = i;
+        this.changeIndexPage(i);
+        this.cur = this.getIndex;
       }
     }
   }
