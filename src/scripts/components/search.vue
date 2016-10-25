@@ -44,13 +44,13 @@
 					<span>知识库</span>
 				</div>
 				<ul class="search-news-ul">
-					<li v-for="newsList in hotList">
+					<li v-for="newsList in knowladgeList">
 						<dl>
 								<dt>
 									<img v-bind:src="newsList.img"/>
 								</dt>
 								<dd>
-									<p>{{newsList.contain}}</p>
+									<p>{{newsList.desc}}</p>
 									<span><img src="/images/lxn/searchImg/right_arrows.png"/></span>
 								</dd>
 						</dl>
@@ -87,13 +87,19 @@
 		ready:function(){
 			var myScroll;
 			var that=this;
-			this.$http.get('/mock/lxn/list.json')
+			this.$http.get('/zhixiao/hotList')
 			.then(
 				(res)=>{
-					that.hotList=res.data;
+					that.hotList=res.data.data;
 				}
 			);
-			this.$http.get("/mock/lxn/iconList.json")
+			this.$http.get('/zhixiao/list')
+			.then(
+				(res)=>{
+					that.knowladgeList=res.data.data;
+				}
+			);
+			this.$http.get("/zhixiao/iconList")
 			.then(
 				(res)=>{
 					that.lifeList=res.data;
@@ -111,12 +117,12 @@
 						},0);
 						myScroll.on("scrollEnd",function(){
 							if(this.y>=0){
-									that.$http.get("/mock/lxn/more.json").then(
+									that.$http.get("/zhixiao/moreList").then(
 										(res)=>{
 											 setTimeout(function () {
 												myScroll.scrollTo(0,-30);
-												that.moreList=res.data;
-												that.hotList=that.moreList.concat(that.hotList);
+												that.moreList=res.data.data;
+												that.knowladgeList=that.moreList.concat(that.knowladgeList);
 											}, 500);
 											setTimeout(function(){
 												myScroll.refresh();
@@ -127,11 +133,12 @@
 							 var maxY = this.maxScrollY - this.y;
 							 if(maxY>=0){
 								 console.log(0);
-									that.$http.get("/mock/lxn/more.json").then(
+									that.$http.get("/zhixiao/moreList").then(
 										(res)=>{
+
 											 setTimeout(function () {
-												that.moreList=res.data;
-												that.hotList=that.hotList.concat(that.moreList);
+												that.moreList=res.data.data;
+												that.knowladgeList=that.knowladgeList.concat(that.moreList);
 													myScroll.scrollTo(0,myScroll.maxScrollY-140);
 											}, 500);
 											setTimeout(function(){
