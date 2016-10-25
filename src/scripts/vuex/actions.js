@@ -8,3 +8,11 @@ export default {
     dispatch('LOGINPREPATHSHIFT');
   }
 }
+export const changeIndexPage = ({dispatch,state},index)=>{
+  console.log('indexPage:'+ index);
+  dispatch('SETINDEXCURPAGE',index);
+}
+export const setUser =({dispatch,state},user)=>{
+  console.log('user:' + user.username);
+  dispatch('SETUSER',user);
+}

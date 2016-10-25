@@ -35,6 +35,46 @@
         width: 100%;
         flex:1;
         overflow: hidden;
+        .Hhead {
+            text-align: center;
+            height: 0.35rem;
+            line-height: 0.35rem;
+            &.hide {
+                display: none;
+            }
+        }
+        .Hhead img {
+            width: 0.16rem;
+            display: inline-block;
+            transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            transition: transform 150ms;
+            -webkit-transition: transform 150ms;
+        }
+        .up {
+            transform: rotate(360deg) !important;
+            -webkit-transform: rotate(360deg) !important;
+        }
+
+       .Hfoot {
+            text-align: center;
+            height: 0.35rem;
+            line-height: 0.35rem;
+        }
+
+        .Hfoot img {
+            display: inline-block;
+            width: 0.16rem;
+            /*transform: rotate(0deg);*/
+            /*-webkit-transform: rotate(0deg);*/
+            transition: transform 150ms;
+            -webkit-transition: transform 150ms;
+        }
+
+        .Hfoot .down {
+            transform: rotate(180deg) !important;
+            -webkit-transform: rotate(180deg) !important;
+        }
         #allFirst,#allSecond{
              background: url(/images/lee/head/icon.png) no-repeat 80% 99%;
         }

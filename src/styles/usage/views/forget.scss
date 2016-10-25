@@ -17,9 +17,14 @@
       top: 50%;
       right: 0;
       background: #ccc;
-      padding: .05rem;
+      width: 0.8rem;
+      text-align: center;
+      line-height: .32rem;
       color: #fff;
       // transform: translate(0,-50%);
+      &.active{
+        background: #1793f9;
+      }
     }
   }
   .newPassword input{
