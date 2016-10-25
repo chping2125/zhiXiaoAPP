@@ -33,10 +33,10 @@
 						</section>
 		    		</div>
 		    		<div class="swiper-slide">
-		    			2
+		    			收藏
 		    		</div>
 		    		<div class="swiper-slide">
-		    			3
+		    			点评
 		    		</div>
 		    	</div>								
 		    </div>

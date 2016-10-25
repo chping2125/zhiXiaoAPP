@@ -73,8 +73,8 @@
   														</div>  														
 							              </section>
   											</div>
-  											<div class="swiper-slide">qqqqqq</div>
-  											<div class="swiper-slide">qqqqqq</div>
+  											<div class="swiper-slide">七天</div>
+  											<div class="swiper-slide">总榜</div>
 
   									</div>
   							</div>
