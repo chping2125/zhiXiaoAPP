@@ -1,5 +1,5 @@
 module.exports = {
-	[
+"data":	[
 	{
 		"title":"杜特尔特刚走，南海就出事，中国被打脸了吗？",
 		"from":"新浪",

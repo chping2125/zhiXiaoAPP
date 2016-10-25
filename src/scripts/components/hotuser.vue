@@ -70,7 +70,7 @@
   			var that = this;
   			this.$http.get('/zhixiao/hot')
   				.then((res) => {
-	  				this.messageU = res.data;
+	  				this.messageU = res.data.data;
 	  				setTimeout(function(){
 		            	new IScroll('#hotUser-scroll');
 		            }, 500);

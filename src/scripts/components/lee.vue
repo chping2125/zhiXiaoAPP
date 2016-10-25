@@ -178,7 +178,7 @@
   			var that = this;
   			this.$http.get('/zhixiao/hot')
   				.then((res) => {
-  					 this.message = res.data;
+  					 this.message = res.data.data;
   					 setTimeout(function(){
 	            	hotScroll = new IScroll('#hot-scroll',{
 	            			probeType: 3,//每滚动一像素触发一次
@@ -215,7 +215,7 @@
                          // ajax下拉刷新数据
                         that.$http.get('/zhixiao/hotRefresh')
                             .then((res) => {
-                                that.message = res.data.concat(that.message);
+                                that.message = res.data.data.concat(that.message);
                                 hotScroll.scrollTo(0, -35);
                                 head.removeClass('up');
                                 head.attr('src', './images/lee/arrow.png');
@@ -237,7 +237,7 @@
                     //ajax上拉加载数据
                     that.$http.get('/zhixiao/hotRefresh')
                         .then((res) => {
-                            that.message = that.message.concat(res.data);
+                            that.message = that.message.concat(res.data.data);
                             foot.removeClass('down');
                             foot.attr('src', './images/lee/arrow.png');
                             Vue.nextTick(function() {
@@ -273,9 +273,9 @@
   					 })
 
   				});
-  				this.$http.get('/mock/lee/users.json')
+  				this.$http.get('/zhixiao/hotUsers')
   					.then((res) => {
-  							var userMes  =  res.data;
+  							var userMes  =  res.data.data;
   							var len = userMes.length;
   							function doPai(userMes,len,xxx){
   										var arr = userMes.concat();

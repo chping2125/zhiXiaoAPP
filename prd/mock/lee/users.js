@@ -1,5 +1,5 @@
 module.exports = {
-	[
+"data":	[
 	{
 		"ranking":1,
 		"img":"/images/lee/head/h1.jpg",
