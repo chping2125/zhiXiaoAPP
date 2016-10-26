@@ -72,3 +72,21 @@ html,body{
     }
   }
 }
+.goto-transition {
+  transition: transform .3s ease;
+}
+.goto-enter {
+  @include transform(translate(0, 0));
+}
+.goto-leave {
+  @include transform(translate(-100%, 0));
+}
+.back-transition {
+  transition: transform .3s ease;
+}
+.back-enter {
+  @include transform(translate(0, 0));
+}
+.back-leave {
+  @include transform(translate(100%, 0));
+}

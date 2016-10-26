@@ -6,6 +6,12 @@ export default {
   loginPrePathShift: ({dispatch,state})=>{
     console.log('delete....');
     dispatch('LOGINPREPATHSHIFT');
+  },
+  detailsPath:({dispatch,state},path)=>{
+    dispatch("DETAILSACTION",path);
+  },
+  detailsPathShift:({dispatch,state})=>{
+    dispatch("DETAILSACTIONSHIFT");
   }
 }
 export const changeIndexPage = ({dispatch,state},index)=>{

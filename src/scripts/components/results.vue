@@ -13,7 +13,7 @@
         <ul>
           <li v-for="items in findAll">
             <div class="results_left">
-              <p>{{items.contain}}</p>
+              <p>{{items.desc}}</p>
               <div>
                 <span>{{items.from}}</span>
                 <span>阅读<em>{{items.readNum}}</em></span>
@@ -47,9 +47,9 @@ export default{
   ready:function(){
     var that=this;
     this.key=this.$route.params.key;
-    this.$http.get("/mock/lxn/list.json").then(
+    this.$http.get("/zhixiao/list").then(
       (res)=>{
-        that.findAll=utilFuntion.serAction(that.key,res.data);
+        that.findAll=utilFuntion.serAction(that.key,res.data.data);
       }
     )
     setTimeout(function(){

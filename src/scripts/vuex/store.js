@@ -3,6 +3,7 @@ import Vuex from '../libs/vuex.min.js';
 Vue.use(Vuex);
 const state = {
   loginPrePath:['/'],
+  detailsPath:['/'],
   indexCurPage:0,
   user:{}
 };
@@ -18,6 +19,12 @@ const mutations ={
   },
   SETUSER(state,user){
     state.user = user;
+  },
+  DETAILSACTION(state,path){
+    state.detailsPath.unshift(path);
+  },
+  DETAILSACTIONSHIFT(state,path){
+    state.detailsPath.shift();
   }
 };
 
