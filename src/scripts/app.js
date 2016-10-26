@@ -14,7 +14,7 @@ import results from './components/results.vue';
 import login from './components/login.vue';
 import register from './components/register.vue';
 import forget from './components/forget.vue';
-
+import details from './components/details.vue';
 //APP route
 import Vue from './libs/vue.js';
 import VueRouter from './libs/vue-router.js';
@@ -76,7 +76,11 @@ router.map({
   },
   '/hotuser':{
 		component: hotUser
-	}
+	},
+  '/details':{
+    name:'details',
+    component:details
+  }
 });
 
 //启动router

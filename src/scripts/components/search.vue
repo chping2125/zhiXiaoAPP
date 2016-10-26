@@ -44,7 +44,7 @@
 					<span>知识库</span>
 				</div>
 				<ul class="search-news-ul">
-					<li v-for="newsList in knowladgeList">
+					<li v-for="newsList in knowladgeList" v-on:click="ToDetails(newsList)">
 						<dl>
 								<dt>
 									<img v-bind:src="newsList.img"/>
@@ -69,6 +69,7 @@
 <script type="text/javascript">
   var Vue = require('../libs/vue.js');
   var VueResource = require('../libs/vue-resource.js');
+	import vuex from "../vuex/actions.js";
   Vue.use(VueResource);
 	var str='';
 	export default{
@@ -82,6 +83,11 @@
 				downIsshow:true,
 				keyText:'',
 				inputText:''
+			}
+		},
+		vuex:{
+			actions:{
+				setdetailsPath:vuex.detailsPath
 			}
 		},
 		ready:function(){
@@ -156,8 +162,12 @@
 		methods:{
 			keyAction(event){
 				this.$route.router.go({path:'/results',name: 'results', params: { key: this.inputText}});
+			},
+			ToDetails(newsList){
+				this.setdetailsPath({path:this.$route.path,title:newsList.desc});
+        this.$router.go({ name: 'details',query:{id:newsList.id}});
 			}
 		}
-		}
+	}
 
 </script>
