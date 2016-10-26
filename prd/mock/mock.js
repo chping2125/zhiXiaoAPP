@@ -17,8 +17,7 @@ module.exports = function() {
         "password": password,
         "hot": hot,
         "hotRefresh":hotRefresh,
-        "hotUsers":hotUsers
-        "username":username,
+        "hotUsers":hotUsers,
         "hotList":hotList,
         "list":lxnList,
         "moreList":lxnMoreList,
