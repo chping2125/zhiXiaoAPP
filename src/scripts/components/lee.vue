@@ -50,21 +50,31 @@
   									<div class="swiper-wrapper">
   											<div class="swiper-slide">
   													<section id="hot-scroll">
-							                <ul class="mesList">
-							                  <li v-for="mes1 in message">
-							                  	<dl>
-							                  		<dt>
-							                  			<b>{{mes1.title}}</b>
-							                  			<p><span>{{mes1.from}}</span> <span>阅读{{mes1.reader}}</span></p>
-							                  		</dt>
-							                  		<dd><img v-bind:src="mes1.img" alt=""></dd>
-							                  	</dl>
-							                  </li>
-							                </ul>
+  														<div>
+  															<div class="Hhead">
+								                    <img v-bind:src="imgArrow"/>
+								                    <span>下拉刷新...</span>
+								                </div>
+								                <ul class="mesList">
+								                  <li v-for="mes1 in message">
+								                  	<dl>
+								                  		<dt>
+								                  			<b>{{mes1.title}}</b>
+								                  			<p><span>{{mes1.from}}</span> <span>阅读{{mes1.reader}}</span></p>
+								                  		</dt>
+								                  		<dd><img v-bind:src="mes1.img" alt=""></dd>
+								                  	</dl>
+								                  </li>
+								                </ul>
+								                <div class="Hfoot">
+								                  <img v-bind:src="imgArrow"/>
+								                  <span>上拉加载更多...</span>
+								                </div>  															
+  														</div>  														
 							              </section>
   											</div>
-  											<div class="swiper-slide">qqqqqq</div>
-  											<div class="swiper-slide">qqqqqq</div>
+  											<div class="swiper-slide">七天</div>
+  											<div class="swiper-slide">总榜</div>
 
   									</div>
   							</div>
@@ -146,9 +156,11 @@
   	var bodySwiper = null;
   	var userSwiper = null;
   	var doPai = null;
+  	var hotScroll = null;
   	export default{
   		data(){
   			return{
+  				imgArrow: './images/lee/arrow.png',
   				curIndex:0,
   				bodyIndex:0,
   				userIndex:0,
@@ -164,17 +176,86 @@
   		ready:function(){
 
   			var that = this;
-  			this.$http.get('/mock/lee/hot1.json')
+  			this.$http.get('/zhixiao/hot')
   				.then((res) => {
-  					 this.message = res.data;
+  					 this.message = res.data.data;
   					 setTimeout(function(){
-	            	new IScroll('#hot-scroll');
+	            	hotScroll = new IScroll('#hot-scroll',{
+	            			probeType: 3,//每滚动一像素触发一次
+                    mouseWheel: true,
+                    click: true//默认没有点击事件
+	            	});
+	            	hotScroll.scrollTo(0, -35);
+	            	
+	            	var head = $('.Hhead img'),
+                           topImgHasClass = head.hasClass('up');
+                var foot = $('.Hfoot img'),
+                           bottomImgHasClass = head.hasClass('down');
+
+                hotScroll.on('scroll', function() {
+                    var y = this.y,
+                    maxY = this.maxScrollY - y;
+                    if (y >= 0) {
+                        !topImgHasClass && head.addClass('up');
+                        return '';
+                    }
+                    if (maxY >= 0) {
+                        !bottomImgHasClass && foot.addClass('down');
+                        return '';
+                    }
+                });
+
+                hotScroll.on('scrollEnd', function() {
+                    if (this.y >= -35 && this.y < 0) {
+                        hotScroll.scrollTo(0, -35);
+                        head.removeClass('up');
+                    } else if (this.y >= 0) {
+                        head.attr('src', './images/lee/ajax-loader.gif');
+
+                         // ajax下拉刷新数据
+                        that.$http.get('/zhixiao/hotRefresh')
+                            .then((res) => {
+                                that.message = res.data.data.concat(that.message);
+                                hotScroll.scrollTo(0, -35);
+                                head.removeClass('up');
+                                head.attr('src', './images/lee/arrow.png');
+                                Vue.nextTick(function() {
+                                	hotScroll.refresh();
+                                });
+                            })
+                      }
+	            	var self = this;
+                var maxY = this.maxScrollY - this.y;
+                
+                
+                
+                if (maxY > -35 && maxY < 0) {
+                    hotScroll.scrollTo(0, self.maxScrollY + 35);
+                    foot.removeClass('down')
+                } else if (maxY >= 0) {
+                    foot.attr('src', './images/lee/ajax-loader.gif');
+                    //ajax上拉加载数据
+                    that.$http.get('/zhixiao/hotRefresh')
+                        .then((res) => {
+                            that.message = that.message.concat(res.data.data);
+                            foot.removeClass('down');
+                            foot.attr('src', './images/lee/arrow.png');
+                            Vue.nextTick(function() {
+                                hotScroll.refresh();
+                                hotScroll.scrollTo(0, self.maxScrollY + 35);
+                            });
+                        });
+                  }
+	            });	
+	            	
+	            	
+	            	
 	            	new IScroll('#hot2-scroll',{preventDefault:false});
 	            	new IScroll('#hot21-scroll',{preventDefault:false});
 	            	new IScroll('#hot22-scroll',{preventDefault:false});
 	           }, 500);
-
-
+							
+						
   					 mySwiper = new Swiper("#hot-swiper",{
   					 			onSlideChangeStart: function(){
 		              		that.curIndex = mySwiper.activeIndex;
@@ -192,9 +273,9 @@
   					 })
 
   				});
-  				this.$http.get('/mock/lee/users.json')
+  				this.$http.get('/zhixiao/hotUsers')
   					.then((res) => {
-  							var userMes  =  res.data;
+  							var userMes  =  res.data.data;
   							var len = userMes.length;
   							function doPai(userMes,len,xxx){
   										var arr = userMes.concat();

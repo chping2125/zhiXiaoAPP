@@ -1,17 +1,17 @@
 <template>
   <div class="my-container">
-    <div class="headerDafult">
-      <span>{{title}}</span>
+    <div class="yo-header yo-header-normal">
+      <h2 class="title">{{title}}</h2>
     </div>
     <div class="content">
       <div>
         <div class="first one">
           <div class="left">
-            <div><img src="/images/my/user_notlogin_head.png" alt="" /></div>
-            <span>未登录</span>
+            <div><img :src="userImge" alt="" /></div>
+            <span>{{username}}</span>
           </div>
           <div class="right">
-            <button v-link="{ name: 'login', query: { path:this.$route.path, title:'登录' }}">登陆/注册</button>
+            <button v-on:click="goLogin">登陆/注册</button>
           </div>
         </div>
         <div class="two">
@@ -109,19 +109,42 @@
   </div>
 </template>
 <script>
-  import VueRouter from '../libs/vue-router.js';
   import Vue from '../libs/vue.js';
+  import VueRouter from '../libs/vue-router.js';
+  import Vuex from '../vuex/actions.js';
+  import {getUserImg} from '../vuex/getters.js';
+  import {getUserName} from '../vuex/getters.js';
   Vue.use(VueRouter);
   export default {
+    vuex: {
+      actions: {
+        setLoginPrePath: Vuex.loginPrePath
+      },
+      getters:{
+        getUserImg,
+        getUserName
+      }
+    },
     data(){
       return {
         title:'我的',
-        curPath:this.$route.path,
-        prePath:this.$route.params.path
+        userImge: "/images/my/user_notlogin_head.png",
+        username: "未登录"
+      }
+    },
+    computed:{
+      userImge(){
+        return "/images/my/" + (this.getUserImg || "user_notlogin_head.png");
+      },
+      username(){
+        return this.getUserName || "未登录";
       }
     },
     methods:{
-
+      goLogin(){
+        this.setLoginPrePath({path:this.$route.path,title:'登录'});
+        this.$router.go({ name: 'login'})
+      }
     }
   }
 </script>

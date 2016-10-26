@@ -33,10 +33,10 @@
 						</section>
 		    		</div>
 		    		<div class="swiper-slide">
-		    			2
+		    			收藏
 		    		</div>
 		    		<div class="swiper-slide">
-		    			3
+		    			点评
 		    		</div>
 		    	</div>								
 		    </div>
@@ -68,9 +68,9 @@
   		},
   		ready:function(){
   			var that = this;
-  			this.$http.get('/mock/lee/hot1.json')
+  			this.$http.get('/zhixiao/hot')
   				.then((res) => {
-	  				this.messageU = res.data;
+	  				this.messageU = res.data.data;
 	  				setTimeout(function(){
 		            	new IScroll('#hotUser-scroll');
 		            }, 500);

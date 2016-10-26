@@ -7,7 +7,7 @@
             <i class="yo-ico">&#xf07d;</i>
             返回
         </span>
-    </div>
+      </div>
       <div class="content">
         <router-view></router-view>
     </div>
@@ -17,24 +17,38 @@
 <script>
 import VueRouter from '../libs/vue-router.js';
 import Vue from '../libs/vue.js';
+import VuexSet from '../vuex/actions.js';
+import VuexGet from '../vuex/getters.js';
 Vue.use(VueRouter);
 export default {
+  vuex: {
+    actions:{
+      loginPrePathShift: VuexSet.loginPrePathShift
+    },
+    getters:{
+      getLoginPrePath: VuexGet.loginPrePath
+    }
+  },
   data () {
     return {
-      title:this.$route.query.title,
-      curPath:this.$route.path,
-      prePath:this.$route.query.path
+      title:''
     }
   },
   props: ['loginTitle'],
-  computed: {},
-  mounted () {},
   methods: {
     forback(){
-      console.log(this.$route.query.path);
-      this.$router.go(this.$route.query.path);
+      var path = this.getLoginPrePath[0].path;
+      this.loginPrePathShift();
+      this.$router.go(path);
     }
   },
-  components: {}
+  computed:{
+    title () {
+      return this.getLoginPrePath[0].title
+    }
+  },
+  ready(){
+    this.title = this.$route.query.title;
+  }
 }
 </script>

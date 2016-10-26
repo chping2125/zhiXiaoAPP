@@ -23,8 +23,13 @@ import VueResource from './libs/vue-resource.js';
 Vue.use(VueResource);
 Vue.use(VueRouter);
 
+//Vuex
+import store from './vuex/store.js';
+
 let router = new VueRouter();
-let App = Vue.extend({})
+let App = Vue.extend({
+  store: store
+});
 
 router.map({
   '/':{
@@ -40,6 +45,7 @@ router.map({
         component: search
       },
       '/my':{
+        name:'my',
         component: my
       },
       '/results/:key':{
