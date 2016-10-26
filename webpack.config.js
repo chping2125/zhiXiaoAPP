@@ -74,6 +74,7 @@ module.exports = {
 		port:80,
     colors: true,//终端中输出结果为彩色
     //historyApiFallback: true,//不跳转
+    // host: '192.168.43.166',
     inline: true,//实时刷新
     proxy:{
       '/zhixiao/*':{
