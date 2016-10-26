@@ -13,8 +13,8 @@ var hotList = require('./lxn/hotList.js');
 var iconList = require('./lxn/iconList.js');
 module.exports = function() {
     return {
-        "indexnav":indexnav,
-        "indexnew":indexnew,
+      "indexnav":indexnav,
+      "indexnew":indexnew,
         "user": user,
         "vali": vali,
         "username": username,
