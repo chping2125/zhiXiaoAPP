@@ -1,4 +1,5 @@
-[
+module.exports={
+  "data":[
   {
     "iconText":"&#xe64c;",
     "color":"color:#00c2ea",
@@ -31,3 +32,4 @@
     "linkAddr":""
   }
 ]
+}

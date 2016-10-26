@@ -1,5 +1,6 @@
 export default {
-  loginPrePath: state => state.loginPrePath
+  loginPrePath: state => state.loginPrePath,
+  detailsPath: state => state.detailsPath
 };
 export const getIndex = (state)=> state.indexCurPage
 export const getUserName = (state)=> state.user.username

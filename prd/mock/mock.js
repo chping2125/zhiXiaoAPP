@@ -5,7 +5,10 @@ var password = require('./my/password.js');
 var hot = require('./lee/hot.js');
 var hotRefresh = require('./lee/refresh.js');
 var hotUsers = require('./lee/users.js');
-
+var lxnList = require('./lxn/list.js');
+var lxnMoreList = require('./lxn/more.js');
+var hotList = require('./lxn/hotList.js');
+var iconList = require('./lxn/iconList.js');
 module.exports = function() {
     return {
         "user": user,
@@ -16,5 +19,10 @@ module.exports = function() {
         "hot": hot,
         "hotRefresh":hotRefresh,
         "hotUsers":hotUsers
+        "username":username,
+        "hotList":hotList,
+        "list":lxnList,
+        "moreList":lxnMoreList,
+        "iconList":iconList
     }
 }
