@@ -190,7 +190,7 @@
         myscroll1.scrollTo(0, -35);
         myscroll1.on('scrollEnd', function() {
             if (myscroll1.y > -35) {
-                that.$http.get('/mock/index/indexnew.json')
+                that.$http.get('/zhixiao/indexnew')
                     .then((res) => {
                         that.news = res.data.data.concat(that.news);
                         Vue.nextTick(function() {
@@ -201,7 +201,7 @@
             }
             cz = myscroll1.maxScrollY - myscroll1.y;
             if (cz >= 0) {
-                that.$http.get('/mock/index/indexnew.json')
+                that.$http.get('/zhixiao/indexnew')
                     .then((res) => {
                         that.news = that.news.concat(res.data.data);
                         Vue.nextTick(function() {
@@ -225,7 +225,7 @@
 
         ready: function() {
             var that = this;
-            this.$http.get('/mock/index/indexnav.json')
+            this.$http.get('/zhixiao/indexnav')
                 .then((res) => {
                     this.list = res.data.data;
                     this.news = res.data.news;

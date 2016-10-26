@@ -1,3 +1,5 @@
+var indexnav = require('./index/indexnav.js');
+var indexnew = require('./index/indexnew.js');
 var user = require('./my/user.js');
 var vali = require('./my/vali.js');
 var username = require('./my/username.js');
@@ -11,6 +13,8 @@ var hotList = require('./lxn/hotList.js');
 var iconList = require('./lxn/iconList.js');
 module.exports = function() {
     return {
+        "indexnav":indexnav,
+        "indexnew":indexnew,
         "user": user,
         "vali": vali,
         "username": username,

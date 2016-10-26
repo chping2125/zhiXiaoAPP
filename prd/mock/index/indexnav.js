@@ -1,4 +1,4 @@
-{
+module.exports = {
 "data": [{
           "img": "/images/index/index (4).png",
           "path":"/search",

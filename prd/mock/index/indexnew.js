@@ -1,4 +1,4 @@
-{
+module.exports = {
 "data": [{
           "img": "/images/index/new5.jpg",
           "title": "杜特尔特刚走，南海就出事，中国被打脸了吗？",
