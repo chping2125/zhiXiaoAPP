@@ -14,8 +14,7 @@ module.exports = function() {
         "user": user,
         "vali": vali,
         "username": username,
-        "password": password
-        "username":username,
+        "password": password,
         "hot": hot,
         "hotRefresh":hotRefresh,
         "hotUsers":hotUsers
