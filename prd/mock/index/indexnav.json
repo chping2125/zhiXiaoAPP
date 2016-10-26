@@ -1,18 +1,22 @@
 {
 "data": [{
           "img": "/images/index/index (4).png",
+          "path":"/search",
           "title": "兴趣选择"
         },
         {
             "img": "/images/index/index (2).png",
+            "path":"/lee",
             "title": "今日看点"
         },
         {
             "img": "/images/index/index (1).png",
+            "path":"/my",
             "title": "每日签到"
         },
         {
             "img": "/images/index/index (3).png",
+            "path":"/my",
             "title": "邀请好友"
         }
       ],

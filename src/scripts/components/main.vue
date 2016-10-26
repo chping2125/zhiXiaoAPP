@@ -9,7 +9,7 @@
       <div class="grop">
         <ul>
           <li v-for="ix in list">
-            <img v-bind:src="ix.img" v-bind:alt="ix.title" v-link="{path:'/qqq'}"/>
+            <img v-bind:src="ix.img" v-bind:alt="ix.title" v-link="{path:ix.path}"/>
             <i>{{ix.title}}</i>
           </li>
         </ul>
@@ -32,15 +32,141 @@
                   <p>上拉加载</p>
                 </ul>
               </div>
-              <div class="swiper-slide">slider2</div>
-              <div class="swiper-slide">slider3</div>
-              <div class="swiper-slide">slider4</div>
-              <div class="swiper-slide">slider5</div>
-              <div class="swiper-slide">slider6</div>
-              <div class="swiper-slide">slider7</div>
-              <div class="swiper-slide">slider8</div>
-              <div class="swiper-slide">slider9</div>
-              <div class="swiper-slide">slider10</div>
+              <div class="swiper-slide">
+                <ul>
+                  <p>下拉刷新</p>
+                  <li v-for="ns in news">
+                    <dl>
+                      <dt>
+                        <h3>{{ns.title}}</h3>
+                        <i>{{{ns.tips}}}</i>
+                      </dt>
+                      <dd><img v-bind:src="ns.img" alt=""></dd>
+                    </dl>
+                  </li>
+                  <p>上拉加载</p>
+                </ul>
+              </div>
+              <div class="swiper-slide">
+                <ul>
+                  <p>下拉刷新</p>
+                  <li v-for="ns in news">
+                    <dl>
+                      <dt>
+                        <h3>{{ns.title}}</h3>
+                        <i>{{{ns.tips}}}</i>
+                      </dt>
+                      <dd><img v-bind:src="ns.img" alt=""></dd>
+                    </dl>
+                  </li>
+                  <p>上拉加载</p>
+                </ul>
+              </div>
+              <div class="swiper-slide">
+                <ul>
+                  <p>下拉刷新</p>
+                  <li v-for="ns in news">
+                    <dl>
+                      <dt>
+                        <h3>{{ns.title}}</h3>
+                        <i>{{{ns.tips}}}</i>
+                      </dt>
+                      <dd><img v-bind:src="ns.img" alt=""></dd>
+                    </dl>
+                  </li>
+                  <p>上拉加载</p>
+                </ul>
+              </div>
+              <div class="swiper-slide">
+                <ul>
+                  <p>下拉刷新</p>
+                  <li v-for="ns in news">
+                    <dl>
+                      <dt>
+                        <h3>{{ns.title}}</h3>
+                        <i>{{{ns.tips}}}</i>
+                      </dt>
+                      <dd><img v-bind:src="ns.img" alt=""></dd>
+                    </dl>
+                  </li>
+                  <p>上拉加载</p>
+                </ul>
+              </div>
+              <div class="swiper-slide">
+                <ul>
+                  <p>下拉刷新</p>
+                  <li v-for="ns in news">
+                    <dl>
+                      <dt>
+                        <h3>{{ns.title}}</h3>
+                        <i>{{{ns.tips}}}</i>
+                      </dt>
+                      <dd><img v-bind:src="ns.img" alt=""></dd>
+                    </dl>
+                  </li>
+                  <p>上拉加载</p>
+                </ul>
+              </div>
+              <div class="swiper-slide">
+                <ul>
+                  <p>下拉刷新</p>
+                  <li v-for="ns in news">
+                    <dl>
+                      <dt>
+                        <h3>{{ns.title}}</h3>
+                        <i>{{{ns.tips}}}</i>
+                      </dt>
+                      <dd><img v-bind:src="ns.img" alt=""></dd>
+                    </dl>
+                  </li>
+                  <p>上拉加载</p>
+                </ul>
+              </div>
+              <div class="swiper-slide">
+                <ul>
+                  <p>下拉刷新</p>
+                  <li v-for="ns in news">
+                    <dl>
+                      <dt>
+                        <h3>{{ns.title}}</h3>
+                        <i>{{{ns.tips}}}</i>
+                      </dt>
+                      <dd><img v-bind:src="ns.img" alt=""></dd>
+                    </dl>
+                  </li>
+                  <p>上拉加载</p>
+                </ul>
+              </div>
+              <div class="swiper-slide">
+                <ul>
+                  <p>下拉刷新</p>
+                  <li v-for="ns in news">
+                    <dl>
+                      <dt>
+                        <h3>{{ns.title}}</h3>
+                        <i>{{{ns.tips}}}</i>
+                      </dt>
+                      <dd><img v-bind:src="ns.img" alt=""></dd>
+                    </dl>
+                  </li>
+                  <p>上拉加载</p>
+                </ul>
+              </div>
+              <div class="swiper-slide">
+                <ul>
+                  <p>下拉刷新</p>
+                  <li v-for="ns in news">
+                    <dl>
+                      <dt>
+                        <h3>{{ns.title}}</h3>
+                        <i>{{{ns.tips}}}</i>
+                      </dt>
+                      <dd><img v-bind:src="ns.img" alt=""></dd>
+                    </dl>
+                  </li>
+                  <p>上拉加载</p>
+                </ul>
+              </div>
             </div>
           </div>
       </div>
@@ -59,6 +185,33 @@
     var myscroll1;
     var cz;
     Vue.use(VueResource);
+
+    function jiazai(that) {
+        myscroll1.scrollTo(0, -35);
+        myscroll1.on('scrollEnd', function() {
+            if (myscroll1.y > -35) {
+                that.$http.get('/mock/index/indexnew.json')
+                    .then((res) => {
+                        that.news = res.data.data.concat(that.news);
+                        Vue.nextTick(function() {
+                            myscroll1.refresh();
+                            myscroll1.scrollTo(0, -35);
+                        });
+                    });
+            }
+            cz = myscroll1.maxScrollY - myscroll1.y;
+            if (cz >= 0) {
+                that.$http.get('/mock/index/indexnew.json')
+                    .then((res) => {
+                        that.news = that.news.concat(res.data.data);
+                        Vue.nextTick(function() {
+                            myscroll1.refresh();
+                            myscroll1.scrollTo(0, myscroll1.maxScrollY + 35);
+                        });
+                    });
+            }
+        });
+    }
 
     export default {
         data() {
@@ -83,37 +236,11 @@
                     });
 
                     setTimeout(function() {
-                        myscroll1 = new iScroll(".swiper-slide", {
+                        myscroll1 = new iScroll(".swiper-slide-active", {
                             scrollY: true,
                             preventDefault: false
                         });
-                        myscroll1.scrollTo(0, -35);
-                        myscroll1.on('scrollEnd', function() {
-                            if (myscroll1.y > -35) {
-                                that.$http.get('/mock/index/indexnew.json')
-                                    .then((res) => {
-                                        that.news = res.data.data.concat(that.news);
-                                        Vue.nextTick(function() {
-                                            myscroll1.refresh();
-                                            myscroll1.scrollTo(0, -35);
-                                        });
-                                    });
-                            }
-                            // console.log(myscroll1.maxScrollY);
-                            // console.log(myscroll1.y);
-                            cz = myscroll1.maxScrollY - myscroll1.y;
-                            console.log(cz);
-                            if (cz >= 0) {
-                                that.$http.get('/mock/index/indexnew.json')
-                                    .then((res) => {
-                                        that.news = that.news.concat(res.data.data);
-                                        Vue.nextTick(function() {
-                                            myscroll1.refresh();
-                                            myscroll1.scrollTo(0, myscroll1.maxScrollY + 35);
-                                        });
-                                    });
-                            }
-                        });
+                        jiazai(that);
                     }, 500);
 
                     mySwiper = new Swiper('.swiper-container', {
@@ -133,6 +260,11 @@
                                 scrollX: true,
                                 preventDefault: false
                             });
+                            myscroll1 = new iScroll(".swiper-slide-active", {
+                                scrollY: true,
+                                preventDefault: false
+                            });
+                            jiazai(that);
                         }
                     })
                 });
