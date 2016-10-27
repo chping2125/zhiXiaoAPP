@@ -108,7 +108,7 @@
 			this.$http.get("/zhixiao/iconList")
 			.then(
 				(res)=>{
-					that.lifeList=res.data;
+					that.lifeList=res.data.data;
 					setTimeout(function(){
 						myScroll=new IScroll("#iscroll-wrap",{
 							bounce:false,
@@ -145,7 +145,7 @@
 											 setTimeout(function () {
 												that.moreList=res.data.data;
 												that.knowladgeList=that.knowladgeList.concat(that.moreList);
-													myScroll.scrollTo(0,myScroll.maxScrollY-140);
+													myScroll.scrollTo(0,myScroll.maxScrollY-110);
 											}, 500);
 											setTimeout(function(){
 												myScroll.refresh();
@@ -161,11 +161,12 @@
 		},
 		methods:{
 			keyAction(event){
+				console.log(this.inputText);
 				this.$route.router.go({path:'/results',name: 'results', params: { key: this.inputText}});
 			},
 			ToDetails(newsList){
 				this.setdetailsPath({path:this.$route.path,title:newsList.desc});
-        this.$router.go({ name: 'details',query:{id:newsList.id}});
+        this.$route.router.go({path:'/results',name: 'details',params:{id:newsList.id}});
 			}
 		}
 	}

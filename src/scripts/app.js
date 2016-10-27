@@ -77,7 +77,7 @@ router.map({
   '/hotuser':{
 		component: hotUser
 	},
-  '/details':{
+  '/details/:id/:key':{
     name:'details',
     component:details
   }

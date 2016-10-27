@@ -11,7 +11,8 @@
     <div class="results-scroll" id="results-scroll">
       <div class="results-scroll-wrap">
         <ul>
-          <li v-for="items in findAll">
+
+          <li v-for="items in findAll" v-on:click="ToDetailsAction(items)">
             <div class="results_left">
               <p>{{items.desc}}</p>
               <div>
@@ -33,6 +34,7 @@ import Vue from '../libs/vue.js';
 import VueRouter from '../libs/vue-router.js';
 import VueResource from '../libs/vue-resource.js';
 import utilFuntion from '../libs/utils.js';
+import vuexResult from "../vuex/actions.js";
 Vue.use(VueResource);
 Vue.use(VueRouter);
 export default{
@@ -42,6 +44,11 @@ export default{
       id:0,
       isDel:false,
       findAll:[]
+    }
+  },
+  vuex:{
+    actions:{
+      setdetailsPath:vuexResult.detailsPath
     }
   },
   ready:function(){
@@ -59,6 +66,11 @@ export default{
   methods:{
     delAction(){
       this.isDel=true;
+    },
+    ToDetailsAction(detailList){
+
+      this.setdetailsPath({path:'/'+ this.$route.name,title:detailList.desc});
+      this.$router.go({ name: 'details',params:{id:detailList.id,key:this.$route.params.key}});
     }
   }
 }

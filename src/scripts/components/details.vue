@@ -22,6 +22,9 @@
           </p>
       </div>
     </div>
+    <div class="share-commont">
+
+    </div>
   </section>
 </template>
 <script type="text/javascript">
@@ -42,8 +45,9 @@ export default{
   },
   data(){
     return {
+      key:this.$route.params.key,
       perContain:{},
-      id:this.$route.query.id
+      id:this.$route.params.id
     }
   },
   ready:function(){
@@ -68,10 +72,16 @@ export default{
   },
   methods:{
     backBtnAction(){
-      console.log(0);
       var path = this.detailsPath[0].path;
+      var name=path.split('/');
+      var name1=name[1];
       this.detailsPathShift();
-      this.$router.go(path);
+      if(path=='/results'){
+        this.$route.router.go({path:path,name:name1,params:{id:this.id,key:this.key}});
+
+      }else{
+        this.$route.router.go({path:path});
+      }
     }
   }
 }
