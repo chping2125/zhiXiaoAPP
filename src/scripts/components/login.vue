@@ -85,6 +85,7 @@ export default {
               loginTag = userData.some((item)=>{
                 return item.username===this.username&&item.password===this.password
               });
+              console.log(loginTag);
             }
             //mock数据部分 end
 

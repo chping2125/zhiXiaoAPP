@@ -13,7 +13,7 @@
       </label>
     </div>
     <div class="submitBtn">
-      <button class="yo-btn yo-btn-login">提交</button>
+      <button class="yo-btn yo-btn-login" v-on:click="submit">提交</button>
     </div>
   </div>
 </template>
@@ -88,8 +88,10 @@ export default {
               console.log(res.data.message);
             }
           },(res)=>{
-            
             console.log('网络错误，请稍后重试');
+            clearInterval(that.valiTimer);
+            that.valiText = '获取验证码';
+            that.vali = true;
         });
       }
     },
@@ -112,13 +114,29 @@ export default {
         if(!Vali.password(this.password)){
           console.log("密码为6-18位数字、字母和下划线，且以字母开头");
         }else{
-          setTimeout(()=>{
-            console.log("修改密码成功，正在跳转登录页面");
-            var path = this.getLoginPrePath[0].path;
-            this.loginPrePathShift();
-            this.$router.go(path);
-          },1500);
+          this.loginBtn = 3;
         }
+      }else{
+        //验证码未验证
+        console.log('请填写验证码');
+      }
+    },
+    submit(){
+      if(this.loginBtn === 3){
+        this.$http.post('/zhixiao/password',{password:this.password}).then(
+          (res)=>{
+            if(res.ok){
+              console.log("修改密码成功，正在跳转登录页面");
+              setTimeout(()=>{
+                var path = this.getLoginPrePath[0].path;
+                this.loginPrePathShift();
+                this.$router.go(path);
+              },1500);
+            }
+          },(res)=>{
+            console.log('网络错误，请稍后重试');
+          }
+        )
       }else{
         //验证码未验证
         console.log('请填写验证码');

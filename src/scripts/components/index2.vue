@@ -9,7 +9,7 @@
         </span>
       </div>
       <div class="content">
-        <router-view></router-view>
+        <router-view :transition="transitions"></router-view>
     </div>
   </div>
 </template>
@@ -31,15 +31,20 @@ export default {
   },
   data () {
     return {
-      title:''
+      title:'',
+      transitions: 'goto'
     }
   },
   props: ['loginTitle'],
   methods: {
     forback(){
+      this.transitions = 'back';
       var path = this.getLoginPrePath[0].path;
       this.loginPrePathShift();
       this.$router.go(path);
+      setTimeout(()=>{
+        this.transitions = 'goto';
+      },500);
     }
   },
   computed:{
